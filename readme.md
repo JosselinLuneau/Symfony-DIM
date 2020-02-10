@@ -70,7 +70,7 @@ en question afin d'affiche les informations sur le back-office.
 ## Controller
 
 **Qu'est-ce que le ParamConverter ?**
-> Il l'instanciation direct d'un id en une entité indiqué
+> Il permet l'instanciation direct d'un id en une entité indiqué
 dans la signature de la méthode. Cela ce fait grâce au 
 type-hinting
 
@@ -79,9 +79,8 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 ## Form
 
 **Qu'est-ce qu'un formulaire Symfony ?**
-> Il s'agit d'un composant qui permet de créer un formulaire
- html (et de le rendre), de valider les données à leur envoie, de gérer le mapping
- des données avec les données, ... 
+> Il s'agit d'un composant qui permet de créer un formulaire html (et de le rendre), de valider les données à leur 
+>envoient, de gérer le mapping des données avec les données, ... 
  
  *Quels avantages offrent l'usage d'un formulaire ?*
  > Il permet de générer facilement le code html du formulaire, mais aussi de
