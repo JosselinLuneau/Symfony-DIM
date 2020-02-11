@@ -82,10 +82,10 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 > Il s'agit d'un composant qui permet de créer un formulaire html (et de le rendre), de valider les données à leur 
 >envoient, de gérer le mapping des données avec les données, ... 
  
- *Quels avantages offrent l'usage d'un formulaire ?*
+ **Quels avantages offrent l'usage d'un formulaire ?*
  > Il permet de générer facilement le code html du formulaire, mais aussi de
  convertir les données de retour (submit) dans l'entité correspondante.
 
-*Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?*
+**Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?**
 > - Theme global à tout les formulaire
 > - Theme unique à un formulaire
