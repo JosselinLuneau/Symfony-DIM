@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,10 +40,8 @@ class UserController extends AbstractController
     {
         $user = new User();
 
-        $form = $this->createFormBuilder($user)
-            ->add("username", TextType::class)
-            ->add("save", SubmitType::class)
-            ->getForm();
+        $form = $this->createForm(UserType::class, $user);
+
 
         $form->handleRequest($request);
 

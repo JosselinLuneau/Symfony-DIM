@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            {{ post.title }}
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ post.content }}</p>
+        </div>
+        <div class="card-footer text-muted d-flex justify-content-between">
+            <span>
+                Post created at {{ post.createdAt|date("m/d/y h:m:s") }}
+            </span>
+            <span>
+                Author : {{ post.author }}
+            </span>
+        </div>
+    </div>
+    <div>
+
+    <div class="ml-2 mr-2">
+        {{ form(form) }}
+    </div>
+
+
+        <section>
+            {% for comment in post.getComments() %}
+                <div class="card m-3">
+                    <div class="card-body">
+                        <p class="card-text">{{ comment.content }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <p class="card-text">
+                            <small class="text-muted">Author : {{ comment.author }}</small>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">{{ comment.createdAt|date("m/d/y h:m:s") }}</small>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+
+    </div>
+{% endblock %}

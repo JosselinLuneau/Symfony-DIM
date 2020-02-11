@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User extends EntityModel
+class User
 {
     /**
      * @ORM\Id()
@@ -39,7 +39,7 @@ class User extends EntityModel
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="author", orphanRemoval=true)
      */
     private $comments;
 
@@ -154,7 +154,7 @@ class User extends EntityModel
 
     public function __toString()
     {
-        return $this->getUsername();
+        return $this->username;
     }
 
 

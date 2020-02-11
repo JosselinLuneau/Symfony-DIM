@@ -1,16 +1,31 @@
 {% extends "base.html.twig" %}
-
+{% block back %}{% endblock %}
 {% block body %}
+
+    <div class="d-flex flex-row-reverse">
+        <div class="p-1">
+            <a href="{{ path("post_new") }}">
+                <button type="button" class="btn btn-primary">New post</button>
+            </a>
+        </div>
+    </div>
     {% if allPost is empty %}
         No post yet.
     {% else %}
-        <div>
-            {% for post in allPost %}
-                <div>
-                    <p>{{ post.getTitle() }}</p>
-                    <p>{{ post.getContent() }}</p>
+        {% for post in allPost %}
+            <a href="{{ path('post_show', {id: post.id}) }}">
+                <div class="card m-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <div class="card-subtitle">{{ post.createdAt|date("m/d/y h:m:s") }}</div>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted">de {{ post.author }}</h6>
+                        <a href="#" class="card-link">edit</a>
+                        <a href="#" class="card-link">delete</a>
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
+            </a>
+        {% endfor %}
     {% endif %}
 {% endblock %}

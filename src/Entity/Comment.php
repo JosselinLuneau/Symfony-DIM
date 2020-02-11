@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
-class Comment extends EntityModel
+class Comment
 {
     /**
      * @ORM\Id()
@@ -15,11 +15,6 @@ class Comment extends EntityModel
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $author;
 
     /**
      * @ORM\Column(type="text")
@@ -46,19 +41,19 @@ class Comment extends EntityModel
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $author;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(User $author): self
     {
         $this->author = $author;
 
@@ -113,15 +108,8 @@ class Comment extends EntityModel
         return $this;
     }
 
-    public function getUser(): ?User
+    public function __toString()
     {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
+        return $this->content;
     }
 }

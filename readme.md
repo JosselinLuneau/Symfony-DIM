@@ -86,3 +86,6 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
  > Il permet de générer facilement le code html du formulaire, mais aussi de
  convertir les données de retour (submit) dans l'entité correspondante.
 
+*Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?*
+> - Theme global à tout les formulaire
+> - Theme unique à un formulaire

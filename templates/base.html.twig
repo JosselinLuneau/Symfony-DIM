@@ -9,8 +9,13 @@
 </head>
 <body>
 <header>
-    mon header
+    <div class="jumbotron">
+        <h1 class="display-4">Symfony Blog DIM</h1>
+        <p class="lead">This is a very simple blog made with symfony</p>
+        <hr class="my-4">
+    </div>
 </header>
+
 {% for label, messages in app.flashes %}
     {% for message in messages %}
         <div class="flash-{{ label }} alert alert-success alert-dismissible fade show" role="alert">
@@ -22,9 +27,22 @@
     {% endfor %}
 {% endfor %}
 
+{% block back %}
+<div class="d-flex justify-content-end mb-4">
+    <a href="{{ path("homepage") }}">
+        <button type="button" class="btn btn-secondary">Back</button>
+    </a>
+</div>
+{% endblock %}
+
+
 {% block body %}{% endblock %}
+
 <footer>
-    mon footer
+    <hr class="my-4">
+    <p class="display-6">&copy; Josselin Luneau</p>
+    <p class="lead">This is a very simple blog made with symfony</p>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>

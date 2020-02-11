@@ -10,7 +10,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Author;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
-class Post extends EntityModel
+class Post
 {
     /**
      * @ORM\Id()
