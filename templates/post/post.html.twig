@@ -18,9 +18,12 @@
     </div>
     <div>
 
-    <div class="ml-2 mr-2">
-        {{ form(form) }}
-    </div>
+
+        {% if is_granted("is_AUTHENTICATED_FULLY")  %}
+        <div class="ml-2 mr-2">
+            {{ form(form) }}
+        </div>
+        {% endif %}
 
 
         <section>

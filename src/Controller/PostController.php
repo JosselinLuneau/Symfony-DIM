@@ -25,7 +25,6 @@ class PostController extends AbstractController
      */
     public function index(Post $post, Request $request, EntityManagerInterface $entityManager)
     {
-        $this->denyAccessUnlessGranted('view', $post);
 
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -33,7 +32,7 @@ class PostController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $form->getData();
-            $comment->setAuthor($entityManager->getRepository(User::class)->find(1));
+            $comment->setAuthor($this->getUser());
             $comment->setCreatedAt(
                 new \DateTime("now", new \DateTimeZone("Europe/Paris"))
             );
@@ -112,10 +111,5 @@ class PostController extends AbstractController
         return $this->render("post/post_new.html.twig", [
             "form" => $form->createView()
         ]);
-    }
-
-    public function addComment(Request $request, EntityManagerInterface $entityManager)
-    {
-
     }
 }

@@ -115,3 +115,9 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 > Lors d'un insertion en bdd
 
 ## Serializer
+
+**Quels sont les différentes parties du Serializer et à quoi servent-elles ?**
+> - Le normaliseur (passage d'un objet/json/xml/yaml/csv en tableau)
+> -  Le serializer (passage du tableau au format voulu objet/json/xml/yaml/csv)
+
+

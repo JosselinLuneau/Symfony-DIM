@@ -21,6 +21,8 @@ class UserController extends AbstractController
      */
     public function index(User $user, EntityManagerInterface $entityManager)
     {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
         if (empty($user)) {
             throw $this->createNotFoundException("This user does not exist.");
         }
