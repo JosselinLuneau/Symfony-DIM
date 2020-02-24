@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -17,11 +18,14 @@ class Comment
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * @Assert\DateTime
      * @ORM\Column(type="datetime")
      */
     private $createdAt;

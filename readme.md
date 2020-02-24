@@ -105,3 +105,13 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 
 **Quelle importance a les services dans le fonctionnement de Symfony ?**
 > Eviter de réecrire du code
+
+## Validateurs
+
+**À quoi sert le validateur ?**
+> A valider les données
+
+**Dans quel contexte peut-on valider des données ?**
+> Lors d'un insertion en bdd
+
+## Serializer
