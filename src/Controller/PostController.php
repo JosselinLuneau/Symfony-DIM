@@ -25,6 +25,8 @@ class PostController extends AbstractController
      */
     public function index(Post $post, Request $request, EntityManagerInterface $entityManager)
     {
+        $this->denyAccessUnlessGranted('view', $post);
+
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
 
@@ -49,7 +51,7 @@ class PostController extends AbstractController
                 );
             } catch (\Exception $e) {
                 $this->addFlash(
-                    "error",
+                    "danger",
                     "Error while comment creation"
                 );
             }
@@ -80,7 +82,7 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var Post $post */
             $post = $form->getData();
-            $post->setAuthor($entityManager->getRepository(User::class)->find(1));
+            $post->setAuthor($this->getUser());
             $post->setIsPublished(true);
             $post->setCreatedAt(
                 new \DateTime("now", new \DateTimeZone("Europe/Paris"))

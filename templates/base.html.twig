@@ -13,12 +13,32 @@
         <h1 class="display-4">Symfony Blog DIM</h1>
         <p class="lead">This is a very simple blog made with symfony</p>
         <hr class="my-4">
+        <div class="d-flex flex-row-reverse">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="p-1">
+                    <a href="{{ path("profile", {id: app.user.id}) }}">
+                        <button type="button" class="btn btn-secondary">Profile</button>
+                    </a>
+                </div>
+                <div class="p-1">
+                    <a href="{{ path("app_logout") }}">
+                        <button type="button" class="btn btn-danger">Log out</button>
+                    </a>
+                </div>
+            {% else %}
+                <div class="p-1">
+                    <a href="{{ path("app_login") }}">
+                        <button type="button" class="btn btn-secondary">Log in</button>
+                    </a>
+                </div>
+           {% endif %}
+        </div>
     </div>
 </header>
 
 {% for label, messages in app.flashes %}
     {% for message in messages %}
-        <div class="flash-{{ label }} alert alert-success alert-dismissible fade show" role="alert">
+        <div class="flash-{{ label }} alert alert-{{ label }} alert-dismissible fade show" role="alert">
             {{ message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

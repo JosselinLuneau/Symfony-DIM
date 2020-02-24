@@ -89,3 +89,7 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 **Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?**
 > - Theme global à tout les formulaire
 > - Theme unique à un formulaire
+## Services
+
+**À quoi sert un service dans Symfony ?**
+> 

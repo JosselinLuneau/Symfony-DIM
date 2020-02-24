@@ -2,13 +2,16 @@
 {% block back %}{% endblock %}
 {% block body %}
 
-    <div class="d-flex flex-row-reverse">
-        <div class="p-1">
-            <a href="{{ path("post_new") }}">
-                <button type="button" class="btn btn-primary">New post</button>
-            </a>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="d-flex flex-row-reverse">
+            <div class="p-1">
+                <a href="{{ path("post_new") }}">
+                    <button type="button" class="btn btn-primary">New post</button>
+                </a>
+            </div>
         </div>
-    </div>
+    {% endif %}
+
     {% if allPost is empty %}
         No post yet.
     {% else %}
@@ -21,8 +24,10 @@
                             <div class="card-subtitle">{{ post.createdAt|date("m/d/y h:m:s") }}</div>
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted">de {{ post.author }}</h6>
-                        <a href="#" class="card-link">edit</a>
-                        <a href="#" class="card-link">delete</a>
+                        {% if is_granted('edit', post) %}
+                            <a href="#" class="card-link">edit</a>
+                            <a href="#" class="card-link">delete</a>
+                        {% endif %}
                     </div>
                 </div>
             </a>

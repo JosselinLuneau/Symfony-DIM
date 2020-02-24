@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user/{id}/show", name="userview")
+     * @Route("/user/{id}/show", name="profile")
      * @param User $user
      * @param EntityManagerInterface $entityManager
      * @return Response
