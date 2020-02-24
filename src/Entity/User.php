@@ -27,6 +27,7 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @Assert
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -34,7 +35,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive = true;
+    private $isActive = false;
 
     /**
      * @ORM\Column(type="boolean")

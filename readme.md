@@ -92,4 +92,16 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
 ## Services
 
 **À quoi sert un service dans Symfony ?**
-> 
+> Faire des scripts réutilisables
+
+**Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?**
+> EntityManager, Request, Response, Doctrine ..
+
+**Définir les termes suivant : Dependency Injection, Service, Autowiring, Container**
+> - Service : Un objet de classe générique à l'application
+> - DI : Permet l'injection de classe définit comme des services
+> - Autowiring : C'est le passage d'un isntance dans les paramètres d'une méthode sans avoir à l'instancier.
+> - Container : Contient tout les services disponible à l'autowiring
+
+**Quelle importance a les services dans le fonctionnement de Symfony ?**
+> Eviter de réecrire du code
