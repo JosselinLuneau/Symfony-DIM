@@ -21,6 +21,7 @@ Les visiteurs pourront regarder les articles et voir les commentaires.
 ## Doctrine
 **Quelles relations existent entre les entités (Many To One/Many To Many/...) ?**
 
+
 ##### Post
 - Post ManyToOne User (author)
 - Post OneToMany
@@ -39,17 +40,20 @@ Les visiteurs pourront regarder les articles et voir les commentaires.
 **Expliquer ce qu'est le fichier .env**
 
 > le fichier .env correspond aux variable d'environnement
-de l'application
+de l'application (paramètre)
   
 **Expliquer pourquoi il faut changer le connecteur à la base de données**
 
-> Parce que par défaut le connecteur est lié à MySql
+> Parce que par défaut le connecteur est lié à MySql (dans le .env)
 
 **Expliquer l'intérêt des migrations d'une base de données**
 
 > Cela permet de faire des backup en cas de problème 
 de base de données et de la faire evoluer (changement d
 u fonctionnement d'un entité)
+
+**C'est quoi une migration**
+> Versionning de la base de données (rollback et eviter de perdre les données).
 
 ## Administration
 
@@ -72,7 +76,7 @@ en question afin d'affiche les informations sur le back-office.
 **Qu'est-ce que le ParamConverter ?**
 > Il permet l'instanciation direct d'un id en une entité indiqué
 dans la signature de la méthode. Cela ce fait grâce au 
-type-hinting
+type-hinting.
 
 Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html*
 
@@ -85,39 +89,78 @@ Voir : *https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annot
  **Quels avantages offrent l'usage d'un formulaire ?*
  > Il permet de générer facilement le code html du formulaire, mais aussi de
  convertir les données de retour (submit) dans l'entité correspondante.
+ 
+ > Rendu, Validation et Mapping(formulaire au modèle)
 
 **Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?**
 > - Theme global à tout les formulaire
 > - Theme unique à un formulaire
+
+## Securité
+**Definitions**
+> Encoder : Encodé un mot de passe
+> Provider : Récupérer l'utilistatueur
+> Firewall : Façon d'authentifier un utilisateur
+> Access-control : Restreindre/Permettre les accès selon les rôles des utilisateurs
+> Role : Niveau de privilège
+> Voter : Gérer les accès à l'interieur d'une route 
+
+> Granulariter entre Firewall (Accès global au site), Access-Control (Accès à une route) et le voter privilège dans une route.
+
+**Qu'est-ce que FOSUserBundle ? Pourquoi ne pas l'utiliser ?**
+> Gestionnaire d'utilisateur
+
+**Définir les termes suivants : Argon2i, Bcrypt, Plaintext, BasicHTTP**
+>  
+
+**Principe du hashage**
+> Chiffre un mot de passe que l'on ne peut pas déchiffrer (simplification : un chiffre peut provenir de différente addition)
+> 4 :( 2+2 ou 1+3, ou 5+(-1))
+
+**Methodes LoginFormAuthenticator**
+*Les méthodes sont appelées dans l'ordre suivant*
+> **Support** -> vérifie si les conditions sont respecté
+> **GetCredential** -> Définir les identifiants qui proviennent du formulaire
+> **GetUser** -> Récupèrer l'utilisateur à partir des crédential
+> **checkCrédential** -> Valide les identifiants
+> **onAuthentificationSuccess** -> Authentifie si tout ce passe bien.
+
 ## Services
+**Qu'est ce qu'un service**
+> Un service est une classe stateless instancier une seule fois
 
 **À quoi sert un service dans Symfony ?**
-> Faire des scripts réutilisables
+> A tout (voir services.yaml exclude) -> coeur du framework
 
 **Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?**
-> EntityManager, Request, Response, Doctrine ..
+> EntityManager, Router, quasiment tout 
 
 **Définir les termes suivant : Dependency Injection, Service, Autowiring, Container**
-> - Service : Un objet de classe générique à l'application
-> - DI : Permet l'injection de classe définit comme des services
-> - Autowiring : C'est le passage d'un isntance dans les paramètres d'une méthode sans avoir à l'instancier.
-> - Container : Contient tout les services disponible à l'autowiring
+> - Service : Un objet de classe générique à l'application (singleton)
+> - DI : Possibilité de modifier le container (gestion des méthodes qui inject les instances dans l'autowiring)
+> - Autowiring : Permet d'eviter de passer les services dans le yaml.
+> C'est le passage d'un instance dans les paramètres d'une méthode sans avoir à l'instancier.
+> - Container : Contient tout les services disponible à l'autowiring (Gère les instances de service)
 
 **Quelle importance a les services dans le fonctionnement de Symfony ?**
-> Eviter de réecrire du code
+> Les services représentent le mécanisme majeur de Symfony.
 
 ## Validateurs
 
 **À quoi sert le validateur ?**
-> A valider les données
+> A valider les données envoyés par l'utilisateur afin d'assurer leurs cohérences
 
 **Dans quel contexte peut-on valider des données ?**
-> Lors d'un insertion en bdd
+> Entrée de formulaire, post via une API, lecture de fichier, insertion en BDD
 
 ## Serializer
 
 **Quels sont les différentes parties du Serializer et à quoi servent-elles ?**
 > - Le normaliseur (passage d'un objet/json/xml/yaml/csv en tableau)
 > -  Le serializer (passage du tableau au format voulu objet/json/xml/yaml/csv)
+
+## Cache
+## Translation
+## Bundle
 
 

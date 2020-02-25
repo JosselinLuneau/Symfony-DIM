@@ -19,32 +19,31 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-//    /**
-//    * @return Post[] Returns an array of Post objects
-//    */
-//    *
-//    public function findByExampleField($value)
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-
-    /*
-    public function findOneBySomeField($value): ?Post
+    /**
+    * @return Post[] Returns an array of Post objects
+    */
+    public function findLast()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orderBy('p.created_at', 'ASC')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findTopTen()
+    {
+        return $this->createQueryBuilder('p')
+            ->addSelect('COUNT(c.id) AS HIDDEN counter')
+            ->leftjoin("p.comments", "c")
+            ->orderBy('counter', "DESC")
+            ->groupBy("p")
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

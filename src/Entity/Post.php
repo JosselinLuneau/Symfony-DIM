@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -13,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Post
 {
     /**
+     * @Groups({"get_authors"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -55,6 +58,9 @@ class Post
     /**
      * @Assert\NotNull
      * @Assert\NotBlank
+     *
+     * @Groups({"get_authors"})
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -67,18 +73,6 @@ class Post
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPost(): ?string
-    {
-        return $this->Post;
-    }
-
-    public function setPost(string $Post): self
-    {
-        $this->Post = $Post;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
